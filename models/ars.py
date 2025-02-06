@@ -25,7 +25,7 @@ class Model:
         sigma_diag = np.diag(self.Sigma)
         sigma_diag = np.where(sigma_diag < 1e-8, 1.0, sigma_diag)
         normalized_x = np.diag(1.0 / np.sqrt(sigma_diag))@(x-self.mu)
-        pi = (self.M + self.nu*self.delta_k)@x#@normalized_x
+        pi = (self.M + self.nu*self.delta_k)@normalized_x
         # Clip to prevent extreme values
         pi = np.clip(pi, -10, 10)
         return pi
