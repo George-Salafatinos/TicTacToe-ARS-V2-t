@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tic-Tac-Toe Trainer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+</head>
+<body>
+  <h1>Tic-Tac-Toe Trainer</h1>
+  
+  <div id="board">
+    <div class="row">
+      <div class="cell" id="cell-0" data-index="0"></div>
+      <div class="cell" id="cell-1" data-index="1"></div>
+      <div class="cell" id="cell-2" data-index="2"></div>
+    </div>
+    <div class="row">
+      <div class="cell" id="cell-3" data-index="3"></div>
+      <div class="cell" id="cell-4" data-index="4"></div>
+      <div class="cell" id="cell-5" data-index="5"></div>
+    </div>
+    <div class="row">
+      <div class="cell" id="cell-6" data-index="6"></div>
+      <div class="cell" id="cell-7" data-index="7"></div>
+      <div class="cell" id="cell-8" data-index="8"></div>
+    </div>
+  </div>
+  <button id="reset-button" style="margin-top: 15px;">Reset Board</button>
+  <p id="play-status"></p>
+
+  <div id="options">
+    <h2>Train Model (Agent as O)</h2>
+    
+    <label for="algorithm-select">Algorithm:</label>
+    <select id="algorithm-select">
+      <option value="" disabled selected>Select an algorithm</option>
+      <option value="random-search">Random Search</option>
+      <option value="reinforce">REINFORCE</option>
+      <option value="ars">ARS</option>
+      <option value="ppo">PPO</option>
+    </select>
+    <br><br>
+
+    <label for="opponent-select">Opponent (X):</label>
+    <select id="opponent-select">
+      <option value="random" selected>Random Opponent</option>
+      <option value="self-play">Self-Play</option>
+    </select>
+    <br><br>
+
+    <label for="model-name-input">Model Name:</label>
+    <input type="text" id="model-name-input" placeholder="e.g. MySecondPlayerModel" />
+    <br><br>
+
+    <label for="steps-input">Steps:</label>
+    <input type="number" id="steps-input" placeholder="e.g. 50" />
+    <br><br>
+
+    <label for="lr-input">Learning Rate (LR):</label>
+    <input type="text" id="lr-input" placeholder="e.g. 0.01" />
+    <br><br>
+
+    <label for="gamma-input">Discount Factor (Gamma):</label>
+    <input type="text" id="gamma-input" placeholder="e.g. 0.99" />
+    <br><br>
+
+    <button id="train-button">Train</button>
+    <p id="train-status"></p>
+
+    <div id="chart-container">
+      <img id="training-chart" src="" alt="Training Chart" style="max-width: 400px; display: none;">
+    </div>
+
+    <hr>
+    <h2>Play Against Model</h2>
+    <button id="select-model-button">Select Trained Model (In-Memory)</button>
+
+    <hr>
+    <h3>Load Saved Model from Disk</h3>
+    <button id="load-model-list-button">List Saved Models</button>
+    <select id="model-file-select">
+      <option value="" disabled selected>-- no models loaded --</option>
+    </select>
+    <button id="load-disk-model-button">Load Disk Model</button>
+
+    <hr>
+  </div>
+
+  <script src="{{ url_for('static', filename='scripts/tictactoe.js') }}"></script>
+</body>
+</html>
